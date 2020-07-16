@@ -10,6 +10,10 @@ app.get("/", (req, res) => {
 
 app.use(express.static(__dirname + "/public"));
 
+app.get("/json", (req, res) => {
+    res.json("message");
+});
+
 // --> 7)  Mount the Logger middleware here
 
 
