@@ -11,8 +11,12 @@ app.get("/", (req, res) => {
 app.use(express.static(__dirname + "/public"));
 
 app.get("/json", (req, res) => {
+    repsonse = "Hello json";
+    if (process.env.MESSAGE_SYTLE === "uppercase") {
+        repsonse = "Hello json".toUpperCase();
+    }
     res.json({
-        message: "Hello json"
+        message: response
     });
 });
 
