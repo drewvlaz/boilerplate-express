@@ -12,13 +12,18 @@ app.use(express.static(__dirname + "/public"));
 
 app.get("/json", (req, res) => {
     let response = "Hello json";
-    if (process.env.MESSAGE_SYTLE == "uppercase") {
+    if (process.env.MESSAGE_STYLE == "uppercase") {
         response = "Hello json".toUpperCase();
     }
     res.json({
         message: `${response}`
     });
 });
+
+app.use(express.static((req, res, next) => {
+    console.log(`${req.method} ${req.path} - ${req.ip}`);
+    next();
+}));
 
 // --> 7)  Mount the Logger middleware here
 
